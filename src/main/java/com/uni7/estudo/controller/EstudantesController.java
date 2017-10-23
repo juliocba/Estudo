@@ -19,7 +19,7 @@ public class EstudantesController {
 
 	@GetMapping
 	public ModelAndView listar() {
-		ModelAndView modelAndView = new ModelAndView("ListaEstudantes");
+		ModelAndView modelAndView = new ModelAndView("estudante/ListaEstudantes");
 		modelAndView.addObject("estudantes", estudantes.findAll());
 		modelAndView.addObject(new Estudante());
 		return modelAndView;
@@ -29,6 +29,11 @@ public class EstudantesController {
 	public String salvar(Estudante estudante) {
 		this.estudantes.save(estudante);
 		return "redirect:/estudantes";
+	}
+	
+	@RequestMapping("/novo")
+	public String novo(Estudante estudante) {
+		return "estudante/CadastroEstudante";
 	}
 
 }
