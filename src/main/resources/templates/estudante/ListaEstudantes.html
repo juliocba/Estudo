@@ -29,27 +29,19 @@
 		</div>
 		<form class="form-inline" method="POST" th:object="${estudante}" th:action="@{/estudantes}"
 			style="margin: 20px 0">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}"/>
-				<input type="text" class="form-control" placeholder="Objetivo" th:field="*{objetivo}"/>
-				<input type="text" class="form-control" placeholder="Matérias" th:field="*{quantidadeMateria}"/>
-				<button type="submit" class="btn btn-primary">Adicionar</button>
-			</div>
 		</form>
 		<div class="panel-body">
 			<table class="table">
 				<thead>
 					<tr>
 						<th>Nome</th>
-						<th>Objetivo</th>
-						<th>Quantidade de Matérias</th>
+						<th>Email</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="estudante : ${estudantes}">
 						<td th:text="${estudante.nome}"></td>
-						<td th:text="${estudante.objetivo}"></td>
-						<td th:text="${estudante.quantidadeMateria}"></td>
+						<td th:text="${estudante.email}"></td>
 					</tr>
 				</tbody>
 			</table>

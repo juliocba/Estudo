@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+	
+<head>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de planejamento
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
+	
+			<div class="row">
+				<div class="col-sm-6  form-group">
+					<label for="nome">Nome</label>
+					<input id="nome" type="text" class="form-control" placeholder="Ex.: Enem, OAB, Concurso da Caixa"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="data">Data da prova</label>
+					<input id="data" type="date" class="form-control"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3  form-group">
+					<label for="estilo">Matéria</label>
+					<div class="bw-field-action">
+						<select id="estilo" class="form-control">
+							<option value="">Selecione a matéria</option>
+							<option th:each="materia : ${materias}" th:value="materia" th:text="${materia.nome}"/>
+						</select>
+						
+						<div class="bw-field-action__icon">
+							<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstilo">
+								<i class="glyphicon  glyphicon-plus-sign  bw-glyphicon-large"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+	
+		</form>
+	</div>
+	
+	<div th:replace="materia/CadastroRapidoMateria :: modal"></div>
+</section>
+	
+</body>
+</html>

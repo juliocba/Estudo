@@ -7,30 +7,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uni7.estudo.model.Planejamento;
+import com.uni7.estudo.model.Materia;
 import com.uni7.estudo.repository.Materias;
-import com.uni7.estudo.repository.Planejamentos;
 
 @Controller
-@RequestMapping("/planejamentos")
-public class PlanejamentoController {
-
-	@Autowired
-	private Planejamentos planejamentos;
+@RequestMapping("/materias")
+public class MateriaController {
+	
 	@Autowired
 	private Materias materias;
 	
 	@GetMapping
 	public ModelAndView listar() {
-		ModelAndView modelAndView = new ModelAndView("planejamento/CadastroPlanejamento");
+		ModelAndView modelAndView = new ModelAndView("materia/CadastroMateria");
 		modelAndView.addObject("materias", materias.findAll());
+		modelAndView.addObject(new Materia());
 		return modelAndView;
 	}
 
 	@PostMapping
-	public String salvar(Planejamento planejamento) {
-		this.planejamentos.save(planejamento);
-		return "redirect:/planejamentos";
+	public String salvar(Materia materia) {
+		this.materias.save(materia);
+		return "redirect:/materias";
 	}
 	
 }
