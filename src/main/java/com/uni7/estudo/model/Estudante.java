@@ -8,6 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Estudante implements Serializable {
@@ -17,21 +22,32 @@ public class Estudante implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, length = 50)
+	@NotBlank(message = "Nome é obrigatório")
+	@Size(max = 50, message = "Tamanho máximo de 50 caracteres")
 	private String nome;
+	@NotBlank(message = "Email é obrigatório")
+	@Email(message = "Insira um email válido")
 	private String email;
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
+	@NotBlank(message = "Senha é obrigatório")
 	private String senha;
+	@NotBlank(message = "Confirmação de senha é obrigatório")
+	@Transient
+	private String confirmacaoSenha;
+	
 
 	public Estudante() {
 	}
 
-	public Estudante(Long id, String nome, String email, Date dataNascimento, String senha) {
+	public Estudante(Long id, String nome, String email, Date dataNascimento, String senha, String confirmacaoSenha) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.senha = senha;
+		this.confirmacaoSenha = confirmacaoSenha;
 	}
 
 	public Long getId() {
@@ -72,6 +88,14 @@ public class Estudante implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
+
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
 	}
 
 	@Override
