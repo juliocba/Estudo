@@ -18,14 +18,16 @@
 	</div>
 	
 	<div class="container-fluid">
+		<th:block th:include="fragments/MensagemSucesso"></th:block>
 		<form method="POST">
 			<div class="row">
 				<div class="form-group  col-sm-12">
-					<table class="table">
+					<table class="table table-striped table-responsive">
 						<thead>
 							<tr>
 								<th>Matéria</th>
 								<th>Questões</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,8 +36,9 @@
 								<td th:text="${questao.questoes}"></td>
 								<td>
 									<div class="btn-group pull-right">
-                                    <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{materia}(materia=${questao.materia})}">Excluir</a>
-                               </div>
+                                    	<a class="btn btn-sm btn-primary" th:href="@{/delete/{materia}(materia=${questao.materia})}">Responder</a>
+                                    	<a class="btn btn-sm btn-danger" th:href="@{/delete/{materia}(materia=${questao.materia})}">Excluir</a>
+                               		</div>
 								</td>
 							</tr>
 						</tbody>

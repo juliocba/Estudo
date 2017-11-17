@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uni7.estudo.model.Questao;
 import com.uni7.estudo.repository.Questoes;
@@ -38,10 +39,10 @@ public class CartoesController {
 	}
 
 	@GetMapping("/delete/{materia}")
-	public String delete(@PathVariable("materia") String materia) {
+	public String delete(@PathVariable("materia") String materia, RedirectAttributes attributes) {
 
 		questoes.deletaQuestoesPorMateria(materia);
-
+		attributes.addFlashAttribute("mensagem", "Cartão deletado com sucesso!");
 		return "redirect:/cartoes";
 	}
 

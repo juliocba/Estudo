@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Português
+			</h1>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="POST">
+			<div class="row">
+				<div class="form-group  col-sm-2">
+					<h4>
+						<label style="color: DarkBlue">1</label> / <label style="color: DarkRed">1</label> / <label style="color: DarkGreen">1</label>
+					</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group  col-sm-12">
+					<h3 style="text-align: center;"><label>Qual é a figura de linguagem que tem o objetivo de suavizar uma notícia ruim?</label></h3>
+				</div>
+			</div>
+			<div id="resposta" class="row collapse">
+				<div class="form-group  col-sm-12">
+					<hr style="width: 100%; color: gray; height: 1px; background-color:gray;" />
+					<h3 style="text-align: center;"><label>Eufemismo</label></h3>
+				</div>
+			</div>
+			<br />	
+			<div class="form-group" style="text-align: center;">
+				<button type="button" class="btn btn-danger btn-lg" data-toggle="collapse" data-target="#resposta">Difícil</button>
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#resposta">Mostrar resposta</button>
+				<button type="button" class="btn btn-success btn-lg" data-toggle="collapse" data-target="#resposta">Fácil</button>
+			</div>
+		</form>
+	</div>
+</section>
+</html>
