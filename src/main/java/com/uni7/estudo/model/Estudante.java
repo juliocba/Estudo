@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Estudante implements Serializable {
@@ -29,6 +30,7 @@ public class Estudante implements Serializable {
 	@NotBlank(message = "Email é obrigatório")
 	@Email(message = "Insira um email válido")
 	private String email;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	@NotBlank(message = "Senha é obrigatório")

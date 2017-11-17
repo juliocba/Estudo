@@ -21,7 +21,7 @@ public class MateriaController {
 	@Autowired
 	private Materias materias;
 	
-	@GetMapping("/lista")
+	@GetMapping
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("materia/CadastroMateria");
 		modelAndView.addObject("materias", materias.findAll());
@@ -29,15 +29,10 @@ public class MateriaController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/novo")
-	public String novo(Materia materia) {
-		return "materia/CadastroMateria";
-	}
-
 	@PostMapping
 	public String salvar(@Valid Materia materia, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			return novo(materia);
+			return "materia/CadastroMateria";
 		}
 		this.materias.save(materia);
 		attributes.addFlashAttribute("mensagem", "Matéria salva com sucesso!");

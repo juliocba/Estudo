@@ -25,6 +25,14 @@ public class EstudantesController {
 
 	@GetMapping
 	public ModelAndView listar() {
+		ModelAndView modelAndView = new ModelAndView("estudante/CadastroEstudante");
+		modelAndView.addObject("estudantes", estudantes.findAll());
+		modelAndView.addObject(new Estudante());
+		return modelAndView;
+	}
+	
+	@RequestMapping("/lista")
+	public ModelAndView lista() {
 		ModelAndView modelAndView = new ModelAndView("estudante/ListaEstudantes");
 		modelAndView.addObject("estudantes", estudantes.findAll());
 		modelAndView.addObject(new Estudante());
@@ -34,21 +42,16 @@ public class EstudantesController {
 	@PostMapping
 	public String salvar(@Valid Estudante estudante, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			return novo(estudante);
+			return "estudante/CadastroEstudante";
 		}
 		if (!StringUtils.pathEquals(estudante.getSenha(), estudante.getConfirmacaoSenha())) {
 			ObjectError error = new ObjectError("senha", "Senhas não são iguais!");
 			result.addError(error);
-			return novo(estudante);
+			return "estudante/CadastroEstudante";
 		}
 		this.estudantes.save(estudante);
 		attributes.addFlashAttribute("mensagem", "Estudante salvo com sucesso!");
 		return "redirect:/estudantes";
 	}
 	
-	@RequestMapping("/novo")
-	public String novo(Estudante estudante) {
-		return "estudante/CadastroEstudante";
-	}
-
 }

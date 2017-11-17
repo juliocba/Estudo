@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cartões
+			</h1>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="POST">
+			<div class="row">
+				<div class="form-group  col-sm-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Matéria</th>
+								<th>Questões</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="questao : ${questoes}">
+								<td th:text="${questao.materia}"></td>
+								<td th:text="${questao.questoes}"></td>
+								<td>
+									<div class="btn-group pull-right">
+                                    <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{materia}(materia=${questao.materia})}">Excluir</a>
+                               </div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+</html>

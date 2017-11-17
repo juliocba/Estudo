@@ -6,29 +6,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "materia")
-public class Materia {
+@Table(name = "questao")
+public class Questao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, length = 150)
+	@NotBlank(message = "Pergunta é obrigatório")
+	private String pergunta;
+	@Column(nullable = false, length = 150)
+	@NotBlank(message = "Resposta é obrigatório")
+	private String resposta;
 	@Column(nullable = false, length = 50)
-	@NotBlank(message = "Nome é obrigatório")
-	@Size(max = 50, message = "Tamanho máximo de 50 caracteres")
-	private String nome;
+	@NotBlank(message = "Matéria é obrigatório")
+	private String materia;
 
-	public Materia() {
+	public Questao() {
 	}
 
-	public Materia(Long id, String nome) {
-		super();
+	public Questao(Long id, String pergunta, String resposta, String materia) {
 		this.id = id;
-		this.nome = nome;
+		this.pergunta = pergunta;
+		this.resposta = resposta;
+		this.materia = materia;
 	}
 
 	public Long getId() {
@@ -39,14 +44,30 @@ public class Materia {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPergunta() {
+		return pergunta;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPergunta(String pergunta) {
+		this.pergunta = pergunta;
 	}
-	
+
+	public String getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(String resposta) {
+		this.resposta = resposta;
+	}
+
+	public String getMateria() {
+		return materia;
+	}
+
+	public void setMateria(String materia) {
+		this.materia = materia;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -63,7 +84,7 @@ public class Materia {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Materia other = (Materia) obj;
+		Questao other = (Questao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
