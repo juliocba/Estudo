@@ -27,7 +27,7 @@ public class CartoesController {
 	private String nomeMateria = "";
 	private List<Questao> questoesAleatorias = new ArrayList<>();
 
-	@GetMapping("/cartoes")
+	@GetMapping("/")
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("cartao/Cartao");
 		modelAndView.addObject("questoesCont", questoes.retornaMateriaCount());
