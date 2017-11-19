@@ -30,10 +30,22 @@
 		
 	</div>
 	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+	<script th:src="@{/layout/javascripts/bootstrap.min.js}"></script>
 	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
+	<script th:src="@{/layout/javascripts/bootstrap-confirmation.js}"></script>
 	<script th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
 	<script th:src="@{/javascripts/estudo.js}"></script>
 	
-	<th:block layout:fragment="javascript-extra"></th:block>	
+	<th:block layout:fragment="javascript-extra"></th:block>
+	<script type="text/javascript">
+		$('[data-toggle=confirmation]').confirmation({
+			  rootSelector: '[data-toggle=confirmation]',
+			  title : 'Tem certeza?'
+			  // other options
+		});
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip(); 
+		});
+	</script>	
 </body>
 </html>

@@ -27,17 +27,24 @@
 							<tr>
 								<th>Matéria</th>
 								<th>Questões</th>
+								<th>Rendimento</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="questao : ${questoes}">
+							<tr th:each="questao : ${questoesCont}">
 								<td th:text="${questao.materia}"></td>
 								<td th:text="${questao.questoes}"></td>
 								<td>
+									<div class="form-group  col-sm-12">
+										<label style="color: DarkRed" th:text="${questao.dificeis}" data-toggle="tooltip" data-placement="bottom" title="Difíceis"></label>
+										 / <label style="color: DarkGreen" th:text="${questao.faceis}" data-toggle="tooltip" data-placement="bottom" title="Fáceis"></label>
+									</div>
+								</td>
+								<td>
 									<div class="btn-group pull-right">
-                                    	<a class="btn btn-sm btn-primary" th:href="@{/delete/{materia}(materia=${questao.materia})}">Responder</a>
-                                    	<a class="btn btn-sm btn-danger" th:href="@{/delete/{materia}(materia=${questao.materia})}">Excluir</a>
+                                    	<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{/questionario/{materia}(materia=${questao.materia})}">Responder</a>
+                                    	<a class="btn btn-sm btn-danger" data-toggle="confirmation" th:href="@{/delete/{materia}(materia=${questao.materia})}">Excluir</a>
                                		</div>
 								</td>
 							</tr>

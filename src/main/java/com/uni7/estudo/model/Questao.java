@@ -25,15 +25,21 @@ public class Questao {
 	@Column(nullable = false, length = 50)
 	@NotBlank(message = "Matéria é obrigatório")
 	private String materia;
+	@Column(length = 5)
+	private String dificil;
+	@Column(length = 5)
+	private String facil;
 
 	public Questao() {
 	}
 
-	public Questao(Long id, String pergunta, String resposta, String materia) {
+	public Questao(Long id, String pergunta, String resposta, String materia, String dificil, String facil) {
 		this.id = id;
 		this.pergunta = pergunta;
 		this.resposta = resposta;
 		this.materia = materia;
+		this.dificil = dificil;
+		this.facil = facil;
 	}
 
 	public Long getId() {
@@ -66,6 +72,22 @@ public class Questao {
 
 	public void setMateria(String materia) {
 		this.materia = materia;
+	}
+
+	public String getDificil() {
+		return dificil;
+	}
+
+	public void setDificil(String dificil) {
+		this.dificil = dificil;
+	}
+
+	public String getFacil() {
+		return facil;
+	}
+
+	public void setFacil(String facil) {
+		this.facil = facil;
 	}
 
 	@Override

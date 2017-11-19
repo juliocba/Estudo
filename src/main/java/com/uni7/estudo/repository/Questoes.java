@@ -13,12 +13,14 @@ import com.uni7.estudo.model.Questao;
 
 public interface Questoes extends JpaRepository<Questao, Long> {
 
-	@Query(value = "select new com.uni7.estudo.model.MateriaQuestoes(q.materia, count(q)) from Questao q group by q.materia order by q.materia")
+	@Query(value = "select new com.uni7.estudo.model.MateriaQuestoes(q.materia, count(q), count(q.dificil), count(q.facil)) from Questao q group by q.materia order by q.materia")
 	List<MateriaQuestoes> retornaMateriaCount();
 
 	@Transactional
 	@Modifying
 	@Query(value = "delete from questao where materia = ?1", nativeQuery = true)
 	void deletaQuestoesPorMateria(String materia);
+
+	List<Questao> findByMateria(String materia);
 
 }

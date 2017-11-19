@@ -8,6 +8,10 @@
 	
 		    	<nav class="aw-menu  js-menu">
 		      		<ul class="aw-menu__list">
+		      		
+		      			<li class="aw-menu__item">
+		          			<a th:href="@{/cartoes}"><i class="fa  fa-fw  fa-home"></i><span>Cartões</span></a>
+		        		</li>
 		
 		        		<li class="aw-menu__item  is-active">
 		          			<a href="#">
@@ -16,7 +20,7 @@
 		          			</a>
 		      
 		          			<ul class="aw-menu__list  aw-menu__list--sublist">
-					            <li class="aw-menu__item  aw-menu__item--link"><a href="questoes">Cadastro de Questão</a></li>
+					            <li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/questoes}">Cadastro de Questão</a></li>
 		          			</ul>
 		        		</li>
 		      		</ul>
