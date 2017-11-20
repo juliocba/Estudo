@@ -105,7 +105,7 @@ public class CartoesController {
 	public String delete(@PathVariable("materia") String materia, RedirectAttributes attributes) {
 		questoes.deletaQuestoesPorMateria(materia);
 		attributes.addFlashAttribute("mensagem", "Cartão deletado com sucesso!");
-		return "redirect:/cartoes";
+		return "redirect:/";
 	}
 
 }
